@@ -1,5 +1,7 @@
+/**
+ * Created by zhouli on 18/8/23
+ */
 const registerDao = require('../../dao/user').regiterDao;
-
 
 async function registerService(id,name, password, phone) {
     let res = {

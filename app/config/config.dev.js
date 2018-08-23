@@ -1,5 +1,5 @@
 /**
- * Created by zhouli on 18/8/12
+ * Created by zhouli on 18/8/23
  * 配置信息
  */
 config = {

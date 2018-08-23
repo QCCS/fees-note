@@ -1,3 +1,6 @@
+/**
+ * Created by zhouli on 18/8/23
+ */
 const login = require('../service/user/LoginService');
 async function loginController(ctx) {
     let data = ctx.request.body;

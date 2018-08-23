@@ -10,4 +10,9 @@ mysql
 
 npm run dep
 (package.json写死了版本)
+
+
+启动
+npm run start
  
+在postman测试通过
