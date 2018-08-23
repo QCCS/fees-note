@@ -46,6 +46,7 @@ const sql = {
 };
 
 async function insertFeeDao(title, des, total, date_at, u_id) {
+    console.log(title, des, total, date_at, u_id);
     return await query(sql.insert, [title, des, total, date_at, u_id]);
 }
 

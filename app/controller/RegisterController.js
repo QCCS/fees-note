@@ -5,7 +5,10 @@ const registerRouter = new Router();
 
 async function registerController(ctx) {
     let data = ctx.request.body;
-    ctx.body = await register(data.name, data.password, data.phone);
+    console.log(data);
+    let user_id = (new Date()).getTime();
+    console.log(user_id);
+    ctx.body = await register(user_id,data.name, data.password, data.phone);
 }
 registerRouter.post('/register', registerController);
 module.exports = registerRouter;

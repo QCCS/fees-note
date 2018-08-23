@@ -26,12 +26,10 @@ async function loginService(phone, password) {
                     status: 0,
                     message: 'SUCCESS',
                     data: {
-                        userId: user[0].userId,
-                        role: user[0].role
+                        id: user[0].id
                     }
                 }
-            }
-            else {
+            } else {
                 res = {
                     status: 1,
                     message: 'FAILURE',

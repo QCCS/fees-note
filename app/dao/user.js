@@ -12,8 +12,8 @@ const sql = {
     WHERE phone=?
   `,
     register: `
-    INSERT INTO user(name,password,phone)
-      VALUES(?, ?, ?)
+    INSERT INTO user(id,name,password,phone)
+      VALUES(?, ?, ?, ?)
   `,
     edit: `
     UPDATE user SET password=?,phone=?
@@ -25,8 +25,8 @@ async function loginDao(phone, password) {
     return await query(sql.login, [phone, password])
 }
 
-async function registerDao(name, password, phone) {
-    return await query(sql.register, [name, password, phone])
+async function registerDao(id, name, password, phone) {
+    return await query(sql.register, [id, name, password, phone])
 }
 
 async function editDao(newPassword, phone, userId) {

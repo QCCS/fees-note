@@ -18,12 +18,19 @@ const registerRouter = require('../controller/registerController');
 
 router
     .post('/login', loginController)
+    // .post('/loginout', loginoutController)
     .post('/fee', async (ctx) => {
         let data = ctx.request.body;
-        ctx.body = await addFee(data.title, data.des, data.total, data.date_at, ctx.request.userId);
+        console.log(data);
+        let time = new Date();
+        console.log(time);
+        ctx.body = await addFee(data.title, data.des, data.total, time, data.userId);
     })
     .delete('/fee', async (ctx) => {
-        ctx.body = await deleteFee(ctx.request.userId, ctx.request.body.id);
+        let data = ctx.request.body;
+        //可以做校验
+        let userId = data.userId;
+        ctx.body = await deleteFee(data.id);
     })
     .put('/fee', async (ctx) => {
         let data = ctx.request.body;
@@ -33,9 +40,12 @@ router
         ctx.body = await getFeeList();
     })
     .get('/fee', async (ctx) => {
-        ctx.body = await searchFee(ctx.request.query.keyWord, ctx.request.query.keyWord);
+        let data = ctx.request.query;
+        console.log(data);
+        ctx.body = await searchFee(data.title, data.des);
     })
     .get('/fee/:id', async (ctx) => {
+        console.log(ctx.params.id);
         ctx.body = await getFeeInfo(ctx.params.id);
     });
 
