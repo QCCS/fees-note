@@ -30,7 +30,7 @@ router
     .delete('/fee/:id', async (ctx) => {
         console.log(ctx.params.id);
         //可以做校验
-        let userId = data.userId;
+        // let userId = data.userId;
         ctx.body = await deleteFee(ctx.params.id);
     })
     .put('/fee', async (ctx) => {
