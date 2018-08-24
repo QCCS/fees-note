@@ -27,11 +27,11 @@ router
         console.log(time);
         ctx.body = await addFee(data.title, data.des, data.total, time, data.userId);
     })
-    .delete('/fee', async (ctx) => {
-        let data = ctx.request.body;
+    .delete('/fee/:id', async (ctx) => {
+        console.log(ctx.params.id);
         //可以做校验
         let userId = data.userId;
-        ctx.body = await deleteFee(data.id);
+        ctx.body = await deleteFee(ctx.params.id);
     })
     .put('/fee', async (ctx) => {
         let data = ctx.request.body;

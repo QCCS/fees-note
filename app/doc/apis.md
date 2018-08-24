@@ -35,18 +35,10 @@ post
 }
 
 ###4.删除费用
-http://localhost:5000/fee
+http://localhost:5000/fee/:id
 
 请求方式:
 delete
-
-{
-	"title":"费用1",
-	"des":"费用1描述",
-	"total":11,
-	"userId":"1535024514393"
-}
-
 
 
 ###5.获取费用列表
