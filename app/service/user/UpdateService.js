@@ -3,13 +3,13 @@
  */
 const editDao = require('../../dao/user').editDao;
 
-async function EditService(phone, password) {
+async function EditService(name, password, phone, userId) {
     let res = {
         status: 1,
         message: 'FAILURE'
     };
     try {
-        await editDao(phone, password);
+        await editDao(name, password, phone, userId);
         res = {
             status: 0,
             message: 'SUCCESS'

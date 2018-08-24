@@ -12,6 +12,7 @@ const searchFee = require('../service/fee/SearchFeeService');
 const getFeeList = require('../service/fee/GetFeeListService');
 const getFeeInfo = require('../service/fee/GetFeeService');
 
+const updateUser = require('../service/user/UpdateService');
 const loginController = require('../controller/loginController');
 //把路由直接写控制器里面，实现模块级别路由，不用一个一个配置
 const registerRouter = require('../controller/registerController');
@@ -34,7 +35,8 @@ router
     })
     .put('/fee', async (ctx) => {
         let data = ctx.request.body;
-        ctx.body = await updateFee(data.title, data.des, data.total, data.date_at, ctx.request.userId, data.id);
+        let time = new Date();
+        ctx.body = await updateFee(data.title, data.des, data.total, time, data.userId, data.id);
     })
     .get('/feeList', async (ctx) => {
         ctx.body = await getFeeList();
@@ -47,6 +49,11 @@ router
     .get('/fee/:id', async (ctx) => {
         console.log(ctx.params.id);
         ctx.body = await getFeeInfo(ctx.params.id);
+    })
+    .put('/user', async (ctx) => {
+        let data = ctx.request.body;
+        // userId后端拿
+        ctx.body = await updateUser(data.name,data.password,data.phone,data.userId);
     });
 
 module.exports = {

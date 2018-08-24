@@ -4,13 +4,13 @@
 const updateFeeDao = require('../../dao/fee').updateFeeDao;
 const getFeeService = require('./GetFeeService');
 
-async function updateFeeService(title, des, total, date_at,u_id,id) {
+async function updateFeeService(title, des, total, date_at, u_id, id) {
     let res = {
         status: 1,
         message: 'FAILURE'
     };
     try {
-        await updateFeeDao(title, des, total, date_at,u_id,id);
+        await updateFeeDao(title, des, total, date_at, u_id, id);
         res = {
             status: 1,
             message: 'SUCCESS'

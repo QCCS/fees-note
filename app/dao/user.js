@@ -19,7 +19,7 @@ const sql = {
       VALUES(?, ?, ?, ?)
   `,
     edit: `
-    UPDATE user SET password=?,phone=?
+    UPDATE user SET name=?, password=?,phone=?
     WHERE id=?
   `
 };
@@ -32,8 +32,8 @@ async function registerDao(id, name, password, phone) {
     return await query(sql.register, [id, name, password, phone])
 }
 
-async function editDao(newPassword, phone, userId) {
-    return await query(sql.edit, [newPassword, phone, userId])
+async function editDao(name, password, phone, userId) {
+    return await query(sql.edit, [name, password, phone, userId])
 }
 
 //注册
