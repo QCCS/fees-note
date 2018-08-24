@@ -16,3 +16,7 @@ npm run dep
 npm run start
  
 在postman测试通过
+
+数据库备份
+
+npm run backup

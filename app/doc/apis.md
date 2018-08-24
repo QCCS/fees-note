@@ -7,7 +7,7 @@ post
 {
     "name":"",
     "phone":"",
-    "password":"",
+    "password":""
 }
 
 ###2.登陆
@@ -18,7 +18,7 @@ post
 
 {
     "phone":"",
-    "password":"",
+    "password":""
 }
 
 ###3.添加费用
