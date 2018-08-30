@@ -10,6 +10,9 @@ config = {
         password: 'mac123',
         database: 'fees_note',
         port: '3306'
+    },
+    secret:{
+        sign:"secret"
     }
 };
 module.exports = config;

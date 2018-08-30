@@ -1,3 +1,5 @@
+##接口前缀 "api"
+
 ###1.注册
 http://localhost:5000/register
 

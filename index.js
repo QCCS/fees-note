@@ -7,6 +7,7 @@ const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
 const logger = require('koa-logger');
 const Router = require('koa-router');
+const koaJwt = require('koa-jwt')
 // const session = require('koa-generic-session');
 const config = require('./app/config/config.dev');
 const router = require('./app/route/router');
@@ -15,6 +16,14 @@ const indexController = require('./app/controller/index');
 const routerForAllow = new Router();
 const port = process.env.PORT || config.port;
 const app = new Koa();
+
+//拦截校验token
+const err = require('./app/middlreware/error');
+//排除某些接口
+//主要这里的 koaJwt 是签发校验的jwt来着不同的模块
+app.use(koaJwt({secret: config.secret.sign}).unless({path: [/^\/api\/login/, /^\/api\/createUser/]}));
+
+app.use(err());
 
 //配置session的中间件
 /*cookie的签名
@@ -29,6 +38,7 @@ const sessionConfig = {
     renew: false,
 };
 app.use(session(sessionConfig, app));
+详情见 https://github.com/QCCS/koa-project.git
 */
 
 //日志处理

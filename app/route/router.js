@@ -3,7 +3,11 @@
  */
 // 定义路由
 const Router = require('koa-router');
-const router = new Router();
+const router = new Router(
+    {
+        prefix: '/api'//每一个路由的前缀
+    }
+);
 // 费用CURD
 const addFee = require('../service/fee/AddFeeService');
 const deleteFee = require('../service/fee/DeleteFeeService');
