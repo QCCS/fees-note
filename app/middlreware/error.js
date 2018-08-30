@@ -19,7 +19,7 @@ module.exports = function () {
                     console.log('不合法token: ', err)
                 }
             }
-            console.log(`token: ${token}`)
+            console.log(`token: ${token}`);
             await next()
         } catch (err) {
             if (err.status === 401) {

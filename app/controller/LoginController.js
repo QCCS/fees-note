@@ -14,9 +14,11 @@ async function loginController(ctx) {
         // console.log(ctx.session.userinfo);
         // 退出时 ctx.session = null
         // 详情见 https://github.com/QCCS/koa-project.git
-        const userToken = res.data;
-        const token = jwt.sign(userToken, config.secret.sign, {expiresIn: '1h'}) ;
-        res.data.token = token;
+        let userToken = res.data;
+        let accesstoken = jwt.sign(userToken, config.secret.sign, {expiresIn: '1h'}) ;
+        let refreshtoken = jwt.sign(userToken, config.secret.sign, {expiresIn: '168h'}) ;
+        res.data.accesstoken = accesstoken;
+        res.data.refreshtoken = refreshtoken;
         //把这个token，加到登陆接口的响应体里面去
         ctx.body = res;
     }
