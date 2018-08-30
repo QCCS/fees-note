@@ -8,9 +8,9 @@ module.exports = function () {
         try {
             const token = ctx.header.authorization ; // 获取jwt
             if(token) {
-                let payload
+                let payload;
                 try {
-                    const _userToken = token.split(' ')[1];//token中还有其他信息
+                    let _userToken = token.split(' ')[1];//token中还有其他信息
                     payload = jwt.verify(_userToken, config.secret.sign);//解密userToken
                     ctx.user = {
                         id: payload.id
@@ -19,9 +19,7 @@ module.exports = function () {
                     console.log('不合法token: ', err)
                 }
             }
-
             console.log(`token: ${token}`)
-
             await next()
         } catch (err) {
             if (err.status === 401) {
